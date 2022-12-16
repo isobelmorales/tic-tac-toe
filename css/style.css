@@ -1,5 +1,12 @@
 body {
     background-color: #E5D4C0;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
 }
 
 .column {
