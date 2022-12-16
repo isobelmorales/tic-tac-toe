@@ -1,0 +1,10 @@
+body {
+    background-color: #E5D4C0;
+}
+
+.column {
+    height: 100px;
+    width: 100px;
+    background-color: #548687;
+    border: 2px solid #FFFFFF;
+}
