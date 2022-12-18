@@ -9,9 +9,14 @@ body {
     justify-content: center;
 }
 
-.column {
-    height: 100px;
-    width: 100px;
+.square {
+    height: 175px;
+    width: 175px;
     background-color: #548687;
     border: 2px solid #FFFFFF;
+    border-radius: 15px;
+}
+
+button {
+    margin-top: 50px;
 }
