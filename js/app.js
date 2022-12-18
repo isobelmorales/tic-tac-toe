@@ -5,7 +5,9 @@ const reset = document.querySelector('#reset')
 // Function to create game board that will generate 9 squares with the class 'square' and append them to the game-board div
 const createBoard = () => {
     // reset moves
-
+    while (gameBoard.firstChild) {
+        gameBoard.removeChild(gameBoard.firstChild)
+    }
 
     // create 9 squares in 3x3 grid
     for (let i = 1; i <= 9; i++) {
