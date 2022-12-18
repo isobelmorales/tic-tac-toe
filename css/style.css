@@ -4,9 +4,13 @@ body {
     margin: 0 auto;
 }
 
-.row {
+#game-board {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
+    width: 600px;
+    height: 600px;
+
 }
 
 .square {
