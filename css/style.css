@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Unbounded&display=swap');
 
 body {
-    background-image: url(https://images.unsplash.com/photo-1653200256772-06b9e87b40f6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1658&q=80);
-    background-position: center;
+    background: url('https://images.unsplash.com/photo-1653200256772-06b9e87b40f6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1658&q=80');
     background-size: cover;
+    background-position: center;
     font-family: 'Fredoka One', cursive;
     text-align: center;
     margin: 0 auto;
@@ -39,7 +39,7 @@ h2 {
 .square {
     height: 175px;
     width: 175px;
-    background-color: rgba(115, 130, 144, 0.95);
+    background-color: rgba(115, 130, 144, 1);
     border: 2px solid #fcfbfb;
     border-radius: 15px;
     position: relative;
