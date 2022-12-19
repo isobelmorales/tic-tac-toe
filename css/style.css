@@ -103,3 +103,93 @@ button:hover {
         width: 125px;
     }
 }
+
+@media only screen and (max-width: 386px) {
+    .square {
+        height: 115px;
+        width: 115px;
+    }
+}
+
+@media only screen and (max-width: 376px) {
+    .square {
+        height: 90px;
+        width: 90px;
+    }
+}
+
+@media only screen and (max-width: 281px) {
+    .square {
+        height: 70px;
+        width: 70px;
+    }
+    .x {
+        font-size: 50px;
+    }
+    .o {
+        font-size: 50px;
+    }
+}
+
+@media only screen and (max-width: 237px) {
+    .square {
+        height: 60px;
+        width: 60px;
+    }
+    .x {
+        font-size: 47px;
+    }
+    .o {
+        font-size: 47px;
+    }
+}
+
+@media only screen and (max-width: 207px) {
+    .square {
+        height: 50px;
+        width: 50px;
+    }
+    .x {
+        font-size: 43px;
+    }
+    .o {
+        font-size: 43px;
+    }
+}
+@media only screen and (max-width: 177px) {
+    .square {
+        height: 45px;
+        width: 45px;
+    }
+    .x {
+        font-size: 36px;
+    }
+    .o {
+        font-size: 36px;
+    }
+}
+
+@media only screen and (max-width: 153px) {
+    .square {
+        height: 40px;
+        width: 40px;
+    }
+    .x {
+        font-size: 25px;
+    }
+    .o {
+        font-size: 25px;
+    }
+}
+@media only screen and (max-width: 150px) {
+    .square {
+        height: 40px;
+        width: 40px;
+    }
+    .x {
+        font-size: 20px;
+    }
+    .o {
+        font-size: 20px;
+    }
+}
