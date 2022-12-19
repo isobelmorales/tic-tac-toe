@@ -197,7 +197,7 @@ const resetGame = () => {
         gameBoard.removeChild(gameBoard.firstChild)
     }
     createBoard()
-}
+} 
 
 // Event listener for mode
 mode.addEventListener('click', changeMode)

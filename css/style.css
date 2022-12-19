@@ -1,8 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Unbounded&display=swap');
 
 body {
-    /* background-color: #E5D4C0; */
-    /* background-image: url(https://images.unsplash.com/photo-1670226358037-e11d462dcbed?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1932&q=80); */
     background-image: url(https://images.unsplash.com/photo-1653200256772-06b9e87b40f6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1658&q=80);
     background-position: center;
     background-size: cover;
@@ -28,27 +26,20 @@ h2 {
 }
 
 #container {
-    /* width: 600px; */
-    /* height: 600px; */
     margin: 0 auto;
     max-width: 600px;
-    /* align-items: baseline; */
 }
 
 #game-board {
     display: flex;
     justify-content: center;
-    /* flex-direction: row; */
     flex-wrap: wrap;
 }
 
 .square {
     height: 175px;
     width: 175px;
-    /* background-color: #548687; */
-    /* background-color: rgba(255, 255, 255, 0.25); */
     background-color: rgba(115, 130, 144, 0.95);
-    /* border: 2px solid #BEB9B5; */
     border: 2px solid #fcfbfb;
     border-radius: 15px;
     position: relative;
@@ -70,9 +61,7 @@ h2 {
 }
 
 .o {
-    /* color: purple; */
     color: #382e31;
-    /* color: orangered; */
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
