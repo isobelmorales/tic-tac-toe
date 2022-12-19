@@ -42,7 +42,7 @@ const changeMode = (event) => {
 
 // Function to check if there is a winner
 const checkWinner = () => {
-    if (moveOptions.legnth === 0) {
+    if (moveOptions.length === 0) {
             displayTurn.innerText = 'Game over - Tie'
             alert(`It's a tie! Please reset game.`)
             winner = 'tie'
@@ -62,10 +62,10 @@ const checkWinner = () => {
                 showScore()
                 alert(`O wins!`)
             } 
-            }
-    }
-} else {
-    return
+        }
+    } else {
+        return
+    } 
 }
 
 // Function to generate computer's move
