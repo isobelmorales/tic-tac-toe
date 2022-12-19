@@ -1,6 +1,7 @@
 # Tic Tac Toe
 
 ## Overview
+![TicTacToeCoverPhoto](img/game.png)
 
 ## Features
 
