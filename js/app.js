@@ -42,11 +42,7 @@ const changeMode = (event) => {
 
 // Function to check if there is a winner
 const checkWinner = () => {
-    if (moveOptions.length === 0) {
-            displayTurn.innerText = 'Game over - Tie'
-            alert(`It's a tie! Please reset game.`)
-            winner = 'tie'
-    } else if (moveOptions.length <= 4) {
+    if (moveOptions.length <= 4) {
         for (let i = 0; i < 8; i++) {
             let combo = winCombo[i]
             if ((playerSquares.includes(combo[0])) && (playerSquares.includes(combo[1])) && (playerSquares.includes(combo[2]))) {
@@ -61,6 +57,10 @@ const checkWinner = () => {
                 winner = 'O'
                 showScore()
                 alert(`O wins!`)
+            } else {
+                displayTurn.innerText = 'Game over - Tie'
+                alert(`It's a tie! Please reset game.`)
+                winner = 'tie'
             }
         }
     } else {
