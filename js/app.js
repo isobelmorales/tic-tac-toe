@@ -2,6 +2,7 @@
 const gameBoard = document.querySelector('#game-board')
 const reset = document.querySelector('#reset')
 const displayTurn = document.querySelector('#turn')
+const scoreBoard = document.querySelector('#scores')
 
 // Variables to store moves
 const playerSquares = []
@@ -17,22 +18,35 @@ const winCombo = {
     6: ['1', '5', '9'],
     7: ['3', '5', '7']
 }
+let xWins = 0
+let oWins = 0
 let winner = null
+
+const showScore = () => {
+    scoreBoard.innerText = `X:${xWins} O:${oWins}`
+}
 
 // Function to check if there is a winner
 const checkWinner = () => {
     if (moveOptions.length === 0) {
+            displayTurn.innerText = 'Game over - Tie'
             alert(`It's a tie! Please reset game.`)
             winner = 'tie'
     } else if (moveOptions.length <= 4) {
         for (let i = 0; i < 8; i++) {
             let combo = winCombo[i]
             if ((playerSquares.includes(combo[0])) && (playerSquares.includes(combo[1])) && (playerSquares.includes(combo[2]))) {
-                winner = 'player'
-                alert(`Player wins!`)
+                displayTurn.innerText = 'Game over - X Wins'
+                xWins += 1
+                winner = 'X'
+                showScore()
+                alert(`X wins!`)
             } else if ((computerSquares.includes(combo[0])) && (computerSquares.includes(combo[1])) && (computerSquares.includes(combo[2]))) {
-                winner = 'computer'
-                alert(`Computer wins!`)
+                displayTurn.innerText = 'Game over - O Wins'
+                oWins += 1
+                winner = 'O'
+                showScore()
+                alert(`O wins!`)
             }
         }
     } else {
@@ -50,23 +64,30 @@ function computerMove() {
     // change selected square's class
     chosenSquare.classList.toggle('open')
     // insert O in square
-    chosenSquare.innerText = 'O'
+    const o = document.createElement('div')
+    o.classList.add('o')
+    o.innerText = 'O'
+    chosenSquare.appendChild(o)
     // remove square from move options
     moveOptions.splice(moveOptions.indexOf(chosenSquare.id), 1)
     // evaluate if there is a winner
     checkWinner()
     // prompt player to make move
-    displayTurn.innerText = 'Your move'
+    if (winner === 'tie' || winner === 'O') {
+        return
+    } else {
+        displayTurn.innerText = 'X Turn'
+    }
 }
 
 // Function to register player's move and trigger computer's move 
 const playerMove = (event) => {
-    if (winner === 'tie' || winner === 'player' || winner === 'computer') {
+    if (winner === 'tie' || winner === 'X' || winner === 'O') {
         alert(`Game winner is: ${winner}. Please reset game to continue.`)
     } else {
         // if statement - if previously selected square is chosen, show alert
         if (playerSquares.length > computerSquares.length) {
-            alert('Computer is playing. Please wait.')
+            alert('O is playing. Please wait.')
         } else { 
             if (event.target.className === 'square open') {
                 // log player's move
@@ -74,18 +95,21 @@ const playerMove = (event) => {
                 // change selected square's class
                 event.target.classList.toggle('open')
                 // insert X in square
-                event.target.innerText = 'X'
+                const x = document.createElement('div')
+                x.classList.add('x')
+                x.innerText = 'X'
+                event.target.appendChild(x)
                 // remove square from move options
                 moveOptions.splice(moveOptions.indexOf(event.target.id), 1)
                 // evaluate if there is a winner
                 checkWinner()
-                if (winner === 'tie' || winner === 'player' || winner === 'computer') {
+                if (winner === 'tie' || winner === 'X' || winner === 'O') {
                     return
                 } else {
                     // change turn text
-                    displayTurn.innerText = 'The computer is now playing...'
-                    // trigger computer move after 4 second delay
-                    setTimeout(computerMove, 4000)
+                    displayTurn.innerText = 'O Turn'
+                    // trigger computer move after 3 second delay
+                    setTimeout(computerMove, 3000)
                 }
             } else {
                 alert('Square has already been chosen. Please select another square.')
@@ -96,6 +120,7 @@ const playerMove = (event) => {
 
 // Function to create game board that will generate 9 squares with the class 'square' and append them to the game-board div
 const createBoard = () => {
+    showScore()
     // create 9 squares in 3x3 grid
     for (let i = 1; i <= 9; i++) {
         const square = document.createElement('div')
@@ -111,6 +136,8 @@ const createBoard = () => {
 
 // Resets game board when user clicks reset button
 const resetGame = () => {
+    // reset display turn
+    displayTurn.innerText = 'Click on a square to play'
     // reset player moves array
     for (let i = playerSquares.length; i >= 0; i--) {
         playerSquares.pop()
