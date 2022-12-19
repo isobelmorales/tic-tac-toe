@@ -3,6 +3,7 @@ const gameBoard = document.querySelector('#game-board')
 const reset = document.querySelector('#reset')
 const displayTurn = document.querySelector('#turn')
 const scoreBoard = document.querySelector('#scores')
+const mode = document.querySelector('#mode')
 
 // Variables to store moves
 const playerSquares = []
@@ -21,9 +22,22 @@ const winCombo = {
 let xWins = 0
 let oWins = 0
 let winner = null
+let gameMode = 'single'
 
 const showScore = () => {
     scoreBoard.innerText = `X:${xWins} O:${oWins}`
+}
+
+// Changes game mode
+const changeMode = (event) => {
+    event.target.classList.toggle('multiplayer')
+    if (event.target.className === 'multiplayer') {
+        mode.innerText = 'MODE: MULTIPLAYER'
+        gameMode = 'multi'
+    } else {
+        mode.innerText = 'MODE: SINGLE PLAYER'
+        gameMode = 'single'
+    }
 }
 
 // Function to check if there is a winner
@@ -86,30 +100,56 @@ const playerMove = (event) => {
         alert(`Game winner is: ${winner}. Please reset game to continue.`)
     } else {
         // if statement - if previously selected square is chosen, show alert
-        if (playerSquares.length > computerSquares.length) {
+        if ((gameMode === 'single') && (playerSquares.length > computerSquares.length)) {
             alert('O is playing. Please wait.')
         } else { 
             if (event.target.className === 'square open') {
-                // log player's move
-                playerSquares.push(event.target.id)
-                // change selected square's class
-                event.target.classList.toggle('open')
-                // insert X in square
-                const x = document.createElement('div')
-                x.classList.add('x')
-                x.innerText = 'X'
-                event.target.appendChild(x)
-                // remove square from move options
-                moveOptions.splice(moveOptions.indexOf(event.target.id), 1)
-                // evaluate if there is a winner
-                checkWinner()
-                if (winner === 'tie' || winner === 'X' || winner === 'O') {
-                    return
+                if (playerSquares.length > computerSquares.length) {
+                    // log player 2's move
+                    computerSquares.push(event.target.id)
+                    // change selected square's class
+                    event.target.classList.toggle('open')
+                    // insert O in square
+                    const o = document.createElement('div')
+                    o.classList.add('o')
+                    o.innerText = 'O'
+                    event.target.appendChild(o)
+                    // remove square from move options
+                    moveOptions.splice(moveOptions.indexOf(event.target.id), 1)
+                    // check winner
+                    checkWinner()
+                    if (winner === 'tie' || winner === 'X' || winner === 'O') {
+                        return
+                    } else {
+                        // change turn text
+                        displayTurn.innerText = 'X Turn'
+                    }
                 } else {
-                    // change turn text
-                    displayTurn.innerText = 'O Turn'
-                    // trigger computer move after 3 second delay
-                    setTimeout(computerMove, 3000)
+                    // log player's move
+                    playerSquares.push(event.target.id)
+                    // change selected square's class
+                    event.target.classList.toggle('open')
+                    // insert X in square
+                    const x = document.createElement('div')
+                    x.classList.add('x')
+                    x.innerText = 'X'
+                    event.target.appendChild(x)
+                    // remove square from move options
+                    moveOptions.splice(moveOptions.indexOf(event.target.id), 1)
+                    // evaluate if there is a winner
+                    checkWinner()
+                    if (winner === 'tie' || winner === 'X' || winner === 'O') {
+                        return
+                    } else {
+                        // change turn text
+                        displayTurn.innerText = 'O Turn'
+                        if (gameMode === 'single') {
+                            // trigger computer move after 3 second delay
+                            setTimeout(computerMove, 3000)
+                        } else {
+                            return
+                        }
+                    }
                 }
             } else {
                 alert('Square has already been chosen. Please select another square.')
@@ -158,6 +198,9 @@ const resetGame = () => {
     }
     createBoard()
 }
+
+// Event listener for mode
+mode.addEventListener('click', changeMode)
 
 // Event listener for reset button
 reset.addEventListener('click', resetGame)
