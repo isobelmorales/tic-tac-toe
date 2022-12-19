@@ -96,3 +96,10 @@ button:hover {
         width: 150px;
     }
 }
+
+@media only screen and (max-width: 476px) {
+    .square {
+        height: 125px;
+        width: 125px;
+    }
+}
